@@ -1,0 +1,47 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="62dp"
+    android:height="66dp"
+    android:viewportWidth="62"
+    android:viewportHeight="66">
+    <path android:pathData="M27,27m-25,0a25,25 0,1 1,50 0a25,25 0,1 1,-50 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="27"
+                android:endY="52"
+                android:startX="27"
+                android:startY="2"
+                android:type="linear">
+                <item
+                    android:color="#FF465C88"
+                    android:offset="0" />
+                <item
+                    android:color="#FF678EB6"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M27,27m-25.85,0a25.85,25.85 0,1 1,51.7 0a25.85,25.85 0,1 1,-51.7 0"
+        android:strokeWidth="1.7">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:endX="27"
+                android:endY="52"
+                android:startX="27"
+                android:startY="2"
+                android:type="linear">
+                <item
+                    android:color="#FF637EB3"
+                    android:offset="0" />
+                <item
+                    android:color="#FF3A4C6B"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#E6ECF6"
+        android:pathData="M26.425,18C31.8837,18 36.834,20.9865 40.4868,25.8374C40.7848,26.2349 40.7848,26.7901 40.4868,27.1875C36.834,32.0443 31.8837,35.0308 26.425,35.0308C20.9662,35.0308 16.016,32.0443 12.3632,27.1934C12.0651,26.7959 12.0651,26.2407 12.3632,25.8433C16.016,20.9865 20.9662,18 26.425,18ZM26.0334,32.5118C29.657,32.7398 32.6493,29.7532 32.4214,26.1238C32.2344,23.1315 29.8089,20.706 26.8165,20.519C23.193,20.291 20.2006,23.2776 20.4285,26.907C20.6214,29.8935 23.0469,32.319 26.0334,32.5118ZM26.2146,29.7416C28.1666,29.8643 29.7797,28.2571 29.6511,26.305C29.5518,24.6919 28.2426,23.3886 26.6295,23.2834C24.6775,23.1607 23.0644,24.7679 23.193,26.72C23.2982,28.3389 24.6073,29.6422 26.2146,29.7416Z" />
+</vector>

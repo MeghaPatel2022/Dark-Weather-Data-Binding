@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="matrixType"
+            type="String" />
+
+        <variable
+            name="cityName"
+            type="String" />
+
+        <variable
+            name="currentdata"
+            type="com.darksky.weather.today.weatherforecast.mainactivity.model.currentdata.CurrentDataResponseItem" />
+
+        <variable
+            name="clickHandler"
+            type="com.darksky.weather.today.weatherforecast.mainactivity.MainActivity.MyClickHandlers" />
+    </data>
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinatorLayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_background"
+        tools:context=".mainactivity.MainActivity">
+
+        <RelativeLayout
+            android:id="@+id/rlLoading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieAnimationView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/ic_loader" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/avLoader"
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="@dimen/_75sdp"
+                android:layout_centerInParent="true"
+                app:indicatorColor="@color/white"
+                app:indicatorName="BallScaleMultipleIndicator" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/svMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rlBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_300sdp"
+                    android:background="@drawable/ic_monsson_bg"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/rlTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp">
+
+                        <ImageView
+                            android:id="@+id/imgSetting"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:contentDescription="TODO"
+                            android:onClick="@{clickHandler::onSettingBtnClicked}"
+                            android:src="@drawable/ic_setting" />
+
+                        <ImageView
+                            android:id="@+id/imgSearch"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_alignParentRight="true"
+                            android:onClick="@{clickHandler::onSearchBtnClick}"
+                            android:src="@drawable/ic_search__1_" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvCityName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rlTop"
+                        android:layout_centerInParent="true"
+                        android:layout_marginHorizontal="@dimen/_57sdp"
+                        android:layout_marginTop="@dimen/_minus20sdp"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@{cityName}"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="@dimen/_20sdp" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvCityName"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:id="@+id/tvTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{matrixType.equals(`Metric`) ? String.valueOf(Math.round(currentdata.temperature.metric.value)) : String.valueOf(Math.round(currentdata.temperature.imperial.value))}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_40sdp" />
+
+                        <TextView
+                            android:id="@+id/tvUnit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:layout_toEndOf="@+id/tvTemp"
+                            android:layout_toRightOf="@+id/tvTemp"
+                            android:gravity="center|top"
+                            android:text="@{matrixType.equals(`Metric`) ? (char) 0x00B0 + currentdata.temperature.metric.unit : (char) 0x00B0 + currentdata.temperature.imperial.unit}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/imgIcon"
+                        android:layout_width="@dimen/_200sdp"
+                        android:layout_height="@dimen/_200sdp"
+                        android:layout_below="@+id/rlTemp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="@dimen/_minus7sdp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_minus27sdp"
+                    android:background="@drawable/ic_grp_background">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|top"
+                        android:layout_marginHorizontal="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_40sdp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_17sdp"
+                            android:layout_marginLeft="@dimen/_30sdp"
+                            android:background="@drawable/ic_hourly_forcast"
+                            app:elevation="@dimen/_15sdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvHourly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_12sdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/list_hourly_data" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_minus38sdp"
+                    android:background="@drawable/ic_grp_background_2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_17sdp"
+                        android:layout_marginLeft="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:background="@drawable/ic_weather_detail"
+                        app:elevation="@dimen/_15sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|top"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.0">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_63sdp"
+                                android:background="@drawable/ic_temp"
+                                app:elevation="@dimen/_15sdp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_minus10sdp"
+                                android:gravity="center"
+                                android:text="Feels Like"
+                                android:textColor="#80FFFFFF"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <TextView
+                                android:id="@+id/tvFellTemp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="@{matrixType.equals(`Metric`) ? String.valueOf(Math.round(currentdata.realFeelTemperature.metric.value)) : String.valueOf(Math.round(currentdata.realFeelTemperature.imperial.value))}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_63sdp"
+                                android:background="@drawable/ic_humidity"
+                                app:elevation="@dimen/_15sdp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_minus10sdp"
+                                android:gravity="center"
+                                android:text="Humidity"
+                                android:textColor="#80FFFFFF"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <TextView
+                                android:id="@+id/tvHumidity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="@{currentdata.relativeHumidity + `%`}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_63sdp"
+                                android:background="@drawable/ic_uv_index"
+                                app:elevation="@dimen/_15sdp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_minus10sdp"
+                                android:gravity="center"
+                                android:text="UV Index"
+                                android:textColor="#80FFFFFF"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <TextView
+                                android:id="@+id/tvUvIndex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="@{currentdata.UVIndex + `%`}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|top"
+                        android:layout_marginTop="@dimen/_minus5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.0">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_63sdp"
+                                android:background="@drawable/ic_visibility"
+                                app:elevation="@dimen/_15sdp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_minus10sdp"
+                                android:gravity="center"
+                                android:text="Visibility"
+                                android:textColor="#80FFFFFF"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <TextView
+                                android:id="@+id/tvVisibility"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="@{matrixType.equals(`Metric`) ? String.valueOf(Math.round(currentdata.visibility.metric.value)) : String.valueOf(Math.round(currentdata.visibility.imperial.value))}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_63sdp"
+                                android:background="@drawable/ic_dew"
+                                app:elevation="@dimen/_15sdp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_minus10sdp"
+                                android:gravity="center"
+                                android:text="Dew Point"
+                                android:textColor="#80FFFFFF"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <TextView
+                                android:id="@+id/tvDewPoint"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="@{matrixType.equals(`Metric`) ? String.valueOf(Math.round(currentdata.dewPoint.metric.value)) : String.valueOf(Math.round(currentdata.dewPoint.imperial.value))}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_63sdp"
+                                android:background="@drawable/ic_temp"
+                                app:elevation="@dimen/_15sdp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_minus10sdp"
+                                android:gravity="center"
+                                android:text="Pressure"
+                                android:textColor="#80FFFFFF"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <TextView
+                                android:id="@+id/tvPressure"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="@{matrixType.equals(`Metric`) ? String.valueOf(Math.round(currentdata.pressure.metric.value)) : String.valueOf(Math.round(currentdata.pressure.imperial.value))}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_minus33sdp"
+                    android:background="@drawable/ic_grp_background_2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_17sdp"
+                        android:layout_marginLeft="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:background="@drawable/ic_7day_forcast"
+                        app:elevation="@dimen/_15sdp" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chart1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_marginHorizontal="@dimen/_13sdp"
+                        android:layout_marginTop="@dimen/_35sdp"
+                        android:background="@android:color/transparent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:src="@drawable/ic_horizontal_line" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_minus33sdp"
+                    android:background="@drawable/ic_back_15_days_1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_17sdp"
+                        android:layout_marginLeft="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:background="@drawable/ic_15_days_forcast"
+                        app:elevation="@dimen/_15sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_back_15_days_2">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv15Days"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_13sdp"
+                        android:background="@android:color/transparent"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/list_fifteen_days_list" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/ivNoInternetConnection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_no_internet"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

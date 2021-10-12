@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Weather</string>
+
+    <string name="facebook_app_id">421870655933341</string>
+    <string name="app_id">ca-app-pub-1599168469857155~6608935912</string>
+
+    <string name="vw_rationale_storage" translatable="false">Need Location Permission for getting current location.</string>
+    <string name="choose_a_city">Choose a City</string>
+    <string name="select_city">Select a City or country to see the weather</string>
+
+    <string name="email">p.himashu123@gmail.com</string>
+    <string name="privacy_policy">https://darkskiesweather.blogspot.com/2021/06/we-collect-current-location-of-user-to.html</string>
+</resources>

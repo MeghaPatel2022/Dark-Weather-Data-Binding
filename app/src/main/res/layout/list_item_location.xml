@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/lout_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_3sdp"
+        android:focusable="true"
+        android:focusedByDefault="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/lout_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_loc_back">
+
+            <ImageView
+                android:id="@+id/ivLocation"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:background="@drawable/ic_search" />
+
+            <LinearLayout
+                android:id="@+id/lout_middle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_toLeftOf="@+id/ivDelete"
+                android:layout_toRightOf="@+id/ivLocation"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvlocationName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Current Location"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvarea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="Akshya Nagar 1st Block 1st Cross, Ramurthy nagar"
+                    android:textColor="#80FFFFFF"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:background="@drawable/ic_delete" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

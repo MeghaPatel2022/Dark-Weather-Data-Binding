@@ -1,0 +1,47 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="29dp"
+    android:height="29dp"
+    android:viewportWidth="29"
+    android:viewportHeight="29">
+    <path
+        android:pathData="M28.5,14.5L28.5,14.5A14,14 0,0 1,14.5 28.5L14.5,28.5A14,14 0,0 1,0.5 14.5L0.5,14.5A14,14 0,0 1,14.5 0.5L14.5,0.5A14,14 0,0 1,28.5 14.5z"
+        android:strokeWidth="1">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="26.92094"
+                android:endY="12.5963"
+                android:startX="0.3746"
+                android:startY="12.8626"
+                android:type="linear">
+                <item
+                    android:color="#FF3A4F81"
+                    android:offset="0" />
+                <item
+                    android:color="#FF475A8A"
+                    android:offset="0.473835" />
+                <item
+                    android:color="#FF273866"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:endX="-16.765"
+                android:endY="13.158"
+                android:startX="28.391531"
+                android:startY="13.158"
+                android:type="linear">
+                <item
+                    android:color="#FF637EB3"
+                    android:offset="0" />
+                <item
+                    android:color="#FF3A4C6B"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M15,7C12.243,7 10,9.243 10,12C10,12.8276 10.2069,13.6482 10.6003,14.3761L14.7266,21.8388C14.7815,21.9383 14.8862,21.9999 15,21.9999C15.1138,21.9999 15.2185,21.9383 15.2734,21.8388L19.4012,14.3736C19.7931,13.6482 20,12.8276 20,12C20,9.243 17.7569,7 15,7ZM15,14.5C13.6215,14.5 12.5,13.3785 12.5,12C12.5,10.6215 13.6215,9.5 15,9.5C16.3785,9.5 17.5,10.6215 17.5,12C17.5,13.3785 16.3785,14.5 15,14.5Z" />
+</vector>
